@@ -1,4 +1,4 @@
-package pl.restaurantmanagementsystem.rms.repository.food;
+package pl.restaurantmanagementsystem.rms.entity.food;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,13 +14,13 @@ public class FoodEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String menuId;
+    private Integer menuId;
 
     @Enumerated(EnumType.STRING)
     private Size size;
     private String value;
 
-    public FoodEntity(String menuId, Size size, String value) {
+    public FoodEntity(Integer menuId, Size size, String value) {
         this.menuId = menuId;
         this.size = size;
         this.value = value;

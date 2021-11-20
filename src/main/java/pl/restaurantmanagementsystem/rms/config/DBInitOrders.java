@@ -5,8 +5,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import pl.restaurantmanagementsystem.rms.repository.FoodRepository;
-import pl.restaurantmanagementsystem.rms.repository.food.FoodEntity;
-import pl.restaurantmanagementsystem.rms.repository.food.Size;
+import pl.restaurantmanagementsystem.rms.entity.food.FoodEntity;
+import pl.restaurantmanagementsystem.rms.entity.food.Size;
 
 @Component
 public class DBInitOrders implements ApplicationRunner {
@@ -18,9 +18,9 @@ public class DBInitOrders implements ApplicationRunner {
         this.foodRepository = foodRepository;
     }
     public void run(ApplicationArguments args){
-        foodRepository.save(new FoodEntity("1", Size.M,"Margarita" ));
-        foodRepository.save(new FoodEntity("1", Size.L,"Capricioza" ));
-        foodRepository.save(new FoodEntity("1", Size.M,"Hawajska" ));
-        foodRepository.save(new FoodEntity("1", Size.M,"Mafiozo" ));
+        foodRepository.save(new FoodEntity(1, Size.M,"Margarita" ));
+        foodRepository.save(new FoodEntity(2, Size.L,"Capriciosa" ));
+        foodRepository.save(new FoodEntity(3, Size.M,"Hawajska" ));
+        foodRepository.save(new FoodEntity(4, Size.M,"Mafiozo" ));
     }
 }

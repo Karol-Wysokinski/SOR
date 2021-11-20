@@ -18,9 +18,9 @@ public class DBInitOrders implements ApplicationRunner {
         this.foodRepository = foodRepository;
     }
     public void run(ApplicationArguments args){
-        foodRepository.save(new FoodEntity(1, Size.M,"Margarita" ));
-        foodRepository.save(new FoodEntity(2, Size.L,"Capriciosa" ));
-        foodRepository.save(new FoodEntity(3, Size.M,"Hawajska" ));
-        foodRepository.save(new FoodEntity(4, Size.M,"Mafiozo" ));
+        foodRepository.save(new FoodEntity(1, Size.M,"Margarita", "pizza","", 20d,"smaczne" ));
+        foodRepository.save(new FoodEntity(2, Size.M,"Capriciosa", "pizza","", 23d,"smaczne" ));
+        foodRepository.save(new FoodEntity(3, Size.M,"Hawajska", "pizza","", 25.30,"smaczne" ));
+        foodRepository.save(new FoodEntity(4, Size.M,"Mafiozo", "pizza","", 40d,"smaczne" ));
     }
 }

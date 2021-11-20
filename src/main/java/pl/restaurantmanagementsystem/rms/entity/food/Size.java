@@ -1,4 +1,4 @@
-package pl.restaurantmanagementsystem.rms.repository.food;
+package pl.restaurantmanagementsystem.rms.entity.food;
 
 
 public enum Size {

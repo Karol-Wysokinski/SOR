@@ -26,6 +26,7 @@ public class ClientOrderController {
 
     @GetMapping("/order/status/{orderId}")
     public String getOrderStatus(@PathVariable String orderId) {
+
         return clientService.getOrderStatus(orderId).getMessageTemplate();
     }
 

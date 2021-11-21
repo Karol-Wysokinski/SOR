@@ -3,13 +3,10 @@ package pl.restaurantmanagementsystem.rms.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.restaurantmanagementsystem.rms.model.OrderDto;
-import pl.restaurantmanagementsystem.rms.model.OrderStatus;
 import pl.restaurantmanagementsystem.rms.modelOut.FoodOut;
 import pl.restaurantmanagementsystem.rms.service.ClientService;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
-import java.util.UUID;
 
 @AllArgsConstructor
 @RestController

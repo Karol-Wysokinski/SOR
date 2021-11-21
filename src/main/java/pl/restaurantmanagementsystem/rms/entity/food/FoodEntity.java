@@ -3,6 +3,7 @@ package pl.restaurantmanagementsystem.rms.entity.food;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.restaurantmanagementsystem.rms.model.FoodDto;
+import pl.restaurantmanagementsystem.rms.modelOut.FoodChefOut;
 import pl.restaurantmanagementsystem.rms.modelOut.FoodOut;
 
 import javax.persistence.*;
@@ -53,5 +54,9 @@ public class FoodEntity {
                 this.foodDescription,
                 this.foodPrice,
                 this.foodDetails);
+    }
+
+    public FoodChefOut toFoodChefOut() {
+        return new FoodChefOut(this.menuId, this.value, this.foodDescription, this.foodDetails);
     }
 }

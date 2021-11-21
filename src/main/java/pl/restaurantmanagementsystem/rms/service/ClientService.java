@@ -47,7 +47,7 @@ public class ClientService {
     }
 
     public OrderStatus getOrderStatus(String orderId) {
-        return orderRepository.findByOrderId(orderId).map(OrderStatus::valueOf).orElse(OrderStatus.NOT_EXISTS);
+        return orderRepository.findByOrderId(orderId).map(OrderEntity::getOrderStatus).orElse(OrderStatus.NOT_EXISTS);
     }
 
 

@@ -3,6 +3,7 @@ package pl.restaurantmanagementsystem.rms.entity.food;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.restaurantmanagementsystem.rms.model.FoodDto;
+import pl.restaurantmanagementsystem.rms.modelOut.FoodOut;
 
 import javax.persistence.*;
 
@@ -20,13 +21,37 @@ public class FoodEntity {
     private Size size;
     private String value;
 
-    public FoodEntity(Integer menuId, Size size, String value) {
+    private String foodCategory;
+    private String foodDescription;
+    private double foodPrice;
+    private String foodDetails;
+
+    public FoodEntity(Integer menuId,
+                      Size size,
+                      String value,
+                      String foodCategory,
+                      String foodDescription,
+                      double foodPrice,
+                      String foodDetails) {
         this.menuId = menuId;
         this.size = size;
         this.value = value;
+        this.foodCategory = foodCategory;
+        this.foodDescription = foodDescription;
+        this.foodPrice = foodPrice;
+        this.foodDetails = foodDetails;
     }
 
     public FoodDto toDto() {
         return new FoodDto(this.value, this.menuId, this.size);
+    }
+
+    public FoodOut toFoodOut() {
+        return new FoodOut(this.menuId,
+                this.value,
+                this.foodCategory,
+                this.foodDescription,
+                this.foodPrice,
+                this.foodDetails);
     }
 }

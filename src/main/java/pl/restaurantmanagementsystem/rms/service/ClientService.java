@@ -9,12 +9,14 @@ import pl.restaurantmanagementsystem.rms.model.FoodDto;
 import pl.restaurantmanagementsystem.rms.model.OrderDto;
 import pl.restaurantmanagementsystem.rms.model.OrderStatus;
 import pl.restaurantmanagementsystem.rms.modelIn.FoodIn;
+import pl.restaurantmanagementsystem.rms.modelOut.FoodOut;
 import pl.restaurantmanagementsystem.rms.repository.FoodRepository;
 import pl.restaurantmanagementsystem.rms.repository.OrderRepository;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
@@ -37,6 +39,11 @@ public class ClientService {
 
         return orderId;
     }
+
+    public List<FoodOut> getMenu() {
+        return foodRepository.findAll().stream().map(FoodEntity::toFoodOut).collect(Collectors.toList());
+    }
+
 
     private void validateOrderDto(OrderDto orderDto) throws Exception {
         if (orderDto.getFoodInList().isEmpty()) {

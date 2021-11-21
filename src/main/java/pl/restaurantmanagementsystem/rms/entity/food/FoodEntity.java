@@ -17,7 +17,7 @@ public class FoodEntity {
     private Long id;
     private Integer menuId;
 
-    @Enumerated(EnumType.STRING)
+
     private Size size;
     private String value;
 

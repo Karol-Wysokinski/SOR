@@ -3,7 +3,6 @@ package pl.restaurantmanagementsystem.rms.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.restaurantmanagementsystem.rms.entity.food.FoodEntity;
-import pl.restaurantmanagementsystem.rms.entity.food.Size;
 import pl.restaurantmanagementsystem.rms.entity.order.OrderEntity;
 import pl.restaurantmanagementsystem.rms.model.FoodDto;
 import pl.restaurantmanagementsystem.rms.model.OrderDto;
@@ -16,7 +15,6 @@ import pl.restaurantmanagementsystem.rms.repository.OrderRepository;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
@@ -35,13 +33,21 @@ public class ClientService {
                 .collect(Collectors.toList());
 
         String orderId = UUID.randomUUID().toString();
-        orderRepository.save(new OrderEntity(orderId,foodEntities));
+        orderRepository.save(new OrderEntity(orderId, OrderStatus.IN_PREPARATION, foodEntities));
 
         return orderId;
     }
 
     public List<FoodOut> getMenu() {
-        return foodRepository.findAll().stream().map(FoodEntity::toFoodOut).collect(Collectors.toList());
+        return foodRepository
+                .findAll()
+                .stream()
+                .map(FoodEntity::toFoodOut)
+                .collect(Collectors.toList());
+    }
+
+    public OrderStatus getOrderStatus(String orderId) {
+        return orderRepository.findByOrderId(orderId).map(OrderStatus::valueOf).orElse(OrderStatus.NOT_EXISTS);
     }
 
 

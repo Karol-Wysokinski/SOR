@@ -7,6 +7,7 @@ import pl.restaurantmanagementsystem.rms.model.OrderStatus;
 import pl.restaurantmanagementsystem.rms.modelOut.FoodOut;
 import pl.restaurantmanagementsystem.rms.service.ClientService;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,10 +24,9 @@ public class ClientOrderController {
         return clientService.placeOrder(orderDto);
     }
 
-    @GetMapping("/order/status")
-    public String getOrderStatus(String orderId) {
-        //todo
-        return OrderStatus.IN_PREPARATION.getMessageTemplate();
+    @GetMapping("/order/status/{orderId}")
+    public String getOrderStatus(@PathVariable String orderId) {
+        return clientService.getOrderStatus(orderId).getMessageTemplate();
     }
 
 
@@ -34,7 +34,6 @@ public class ClientOrderController {
     public List<FoodOut> getMenu() {
         return clientService.getMenu();
     }
-
 
 
 }
